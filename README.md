@@ -6,8 +6,8 @@ Author: Patrick Stetz  [(github)](https://github.com/pstetz/)
 
 - [SQL Zoo](https://sqlzoo.net/)
 
+- [Hacker Rank](https://www.hackerrank.com/domains/sql)
+
 ### Planned
 
 - [LeetCode](https://leetcode.com/problemset/database/)
-
-- [Hacker Rank](https://www.hackerrank.com/domains/sql)
