@@ -53,6 +53,7 @@ FROM station
 WHERE MOD(id, 2) = 0;
 
 -- Weather Observation Station 4
+-- (MySQL)
 
 SELECT COUNT(city) - COUNT(DISTINCT city)
 FROM station;
