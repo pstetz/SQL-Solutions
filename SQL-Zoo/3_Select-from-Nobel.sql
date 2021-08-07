@@ -27,8 +27,8 @@ WHERE yr >= 2000 AND subject = 'Peace';
 
 SELECT yr, subject, winner
 FROM nobel
-WHERE yr >= 1980 and yr < 1990 AND
-      subject = 'Literature';
+WHERE yr BETWEEN 1980 and 1989
+  AND subject = 'Literature';
 
 -- Problem 6
 
