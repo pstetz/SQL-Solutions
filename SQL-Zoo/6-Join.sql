@@ -60,6 +60,11 @@ GROUP BY stadium;
 
 -- Problem 11
 
+SELECT matchid, MAX(mdate), COUNT(*)
+FROM game JOIN goal ON matchid = id 
+WHERE (team1 = 'POL' OR team2 = 'POL')
+GROUP BY matchid;
+
 SELECT matchid, mdate, COUNT(teamid)
 FROM (
   SELECT *
@@ -69,6 +74,11 @@ FROM (
 GROUP BY matchid;
 
 -- Problem 12
+
+SELECT matchid, MAX(mdate), COUNT(*)
+FROM game JOIN goal ON matchid = id 
+WHERE teamid = 'GER'
+GROUP BY matchid;
 
 SELECT matchid, mdate, COUNT(teamid)
 FROM (
