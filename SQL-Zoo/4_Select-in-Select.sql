@@ -81,6 +81,11 @@ WHERE name = (SELECT name
               FROM world y
               WHERE y.continent=x.continent
               LIMIT 1);
+              
+SELECT continent, MIN(name)
+FROM world
+GROUP BY continent
+ORDER BY continent
 
 -- Problem 9
 
