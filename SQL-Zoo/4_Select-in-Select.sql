@@ -85,7 +85,7 @@ WHERE name = (SELECT name
 SELECT continent, MIN(name)
 FROM world
 GROUP BY continent
-ORDER BY continent
+ORDER BY continent;
 
 -- Problem 9
 
@@ -96,6 +96,13 @@ WHERE continent in (
   FROM world
   GROUP BY continent
   HAVING MAX(population) <= 25000000);
+  
+SELECT name, continent, population
+FROM world AS x
+WHERE 25000000 > ALL(
+  SELECT population
+  FROM world AS y
+  WHERE x.continent = y.continent);
 
 -- Problem 10
 
