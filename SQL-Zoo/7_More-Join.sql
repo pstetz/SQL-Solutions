@@ -83,21 +83,12 @@ WHERE x.ord = 1 AND movie.yr = 1962;
 
 -- Problem 11
 
-SELECT yr,COUNT(title)
-FROM movie JOIN casting ON movie.id=movieid
-           JOIN actor   ON actorid=actor.id
-WHERE name = 'John Travolta'
+SELECT yr,COUNT(title) FROM
+  movie JOIN casting ON movie.id=movieid
+        JOIN actor   ON actorid=actor.id
+WHERE name='Rock Hudson'
 GROUP BY yr
-HAVING COUNT(title) = (
-  SELECT MAX(title_count)
-  FROM (
-    SELECT yr, COUNT(title) AS title_count
-    FROM movie JOIN casting ON movie.id=movieid
-               JOIN actor   ON actorid=actor.id
-    WHERE name='John Travolta'
-    GROUP BY yr
-  ) AS t
-)
+HAVING COUNT(title) > 2
 
 -- Problem 12
 
@@ -114,14 +105,10 @@ casting.ord = 1;
 -- Problem 13
 
 SELECT name
-FROM (
-  SELECT actor.name name, movie.id id
-  FROM movie JOIN casting ON movie.id=movieid
-             JOIN actor   ON actorid=actor.id
-  WHERE casting.ord = 1
-) x
+FROM actor JOIN casting ON id = actorid
+WHERE ord = 1
 GROUP BY name
-HAVING COUNT(id) > 29;
+HAVING SUM(ord) >= 15
 
 -- Problem 14
 
@@ -134,12 +121,10 @@ ORDER BY Actors DESC, title;
 
 -- Problem 15
 
-SELECT name
-FROM actor JOIN casting ON actorid=actor.id
-WHERE movieid in (
+SELECT DISTINCT name
+FROM actor JOIN casting ON id = actorid
+WHERE movieid IN (
   SELECT movieid
-  FROM movie JOIN casting ON movie.id=movieid
-             JOIN actor   ON actorid=actor.id
+  FROM actor JOIN casting ON id = actorid
   WHERE name = 'Art Garfunkel'
-) AND
-name != 'Art Garfunkel';
+) AND NOT name = 'Art Garfunkel';
