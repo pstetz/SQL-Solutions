@@ -31,6 +31,14 @@ WHERE title = 'Casablanca';
 -- Problem 6
 
 SELECT name
+FROM actor JOIN casting ON id = actorid
+WHERE casting.movieid = (
+  SELECT id 
+  FROM movie
+  WHERE title = 'Casablanca'
+)
+
+SELECT name
 FROM movie JOIN (
   SELECT *
   FROM actor JOIN casting ON actor.id = casting.actorid 
