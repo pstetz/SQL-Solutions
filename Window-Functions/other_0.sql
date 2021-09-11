@@ -1,0 +1,8 @@
+SELECT
+  name, weight,
+  NTILE(2) OVER NTILE_WINDOW AS by_half,
+  NTILE(3) OVER NTILE_WINDOW AS thirds,
+  NTILE(4) OVER NTILE_WINDOW AS quart
+FROM cats
+WINDOW NTILE_WINDOW AS (ORDER BY weight)
+ORDER BY weight;
